@@ -1,0 +1,34 @@
+.form-block{
+    margin: 20px auto;
+    width: 40%;
+}
+
+.inner-box{
+    display: flex;
+    flex-flow: column;
+    border: 1px solid black;
+    box-shadow: 2px -2px 2px black;
+    padding: 10px;
+}
+
+legend{
+    margin-bottom: 2em;
+}
+
+label{
+    display: block;
+}
+
+input[type="radio"],
+input[type="checkbox"]{
+    display: inline-block;
+}
+
+
+/*Bottons style*/
+.btn-clean{
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-color: dimgrey;
+}

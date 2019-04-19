@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Yolo Universe</title>
+    <link rel="stylesheet" href="reset.css">
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <header></header>
+
+    <div class="main">
+        <div class="form-block">
+            <form method="post" action="" id="invite">
+                <div class="inner-box">
+                    <fieldset>
+                        <legend>Personal information:</legend>
+                        <label for="fname">First name</label>
+
+                        <input type="text" name="fname" id="fname" tabindex="1" autofocus
+                               required minlength="2" maxlength="30" >
+                        <button type="button" class="btn-clean" data-action="clean"></button>
+
+                        <label for="lname">Last name</label>
+                        <input type="text" name="lname" id="lname" tabindex="2"
+                               required minlength="1" maxlength="30">
+                        <button type="button" class="btn-clean" data-action="clean"></button>
+
+                        <label for="date">Date of birth (dd.mm.yyyy)</label>
+                        <input type="date" name="date" id="date" tabindex="3"
+                                required min="1900-01-01" max="2015-01-01" placeholder="yyyy-mm-dd">
+                           <div>
+
+                            <label><input type="radio" name="gender" value="m" tabindex="4">Male</label>
+                            <label><input type="radio" name="gender" value="f" tabindex="5">Female</label>
+                            <label><input type="radio" name="gender" value="o" tabindex="6">Other</label>
+                        </div>
+                    </fieldset>
+
+                    <label for="email">E-mail</label>
+                    <input type="email" name="email" id="email" maxlength="254" tabindex="7">
+                    <button type="button" class="btn-clean" data-action="clean"></button>
+
+                    <label for="country">Country</label>
+                    <input name="country" id="country" list="country-list" required tabindex="8">
+                    <button type="button" class="btn-clean" data-action="clean"></button>
+
+                    <datalist id="country-list">
+                        <option value="uk">Ukraine</option>
+                        <option value="usa">USA</option>
+                        <option value="fn">Finland</option>
+                    </datalist>
+
+                    <fieldset>
+                        <legend>Type your address</legend>
+                        <input type="text" name="address-1" id="address-1" tabindex="9"
+                               required maxlength="50" >
+                        <button type="button" class="btn-clean" data-action="clean"></button>
+                        <input type="text" name="address-2" id="address-2" maxlength="50">
+                        <button type="button" class="btn-clean" data-action="clean"></button>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Select curses</legend>
+                        <label><input type="checkbox" name="curse" value="m" tabindex="20">Math</label>
+                        <label><input type="checkbox" name="curse" value="f" tabindex="21">Programming</label>
+                        <label><input type="checkbox" name="curse" value="o" tabindex="22">Other</label>
+                        <label><input type="checkbox" name="curse" value="m" tabindex="23">Math</label>
+                        <label><input type="checkbox" name="curse" value="f" tabindex="24">Programming</label>
+                        <label><input type="checkbox" name="curse" value="o" tabindex="25">Other</label>
+                        <label><input type="checkbox" name="curse" value="m" tabindex="26">Math</label>
+                        <label><input type="checkbox" name="curse" value="f" tabindex="27">Programming</label>
+                        <label><input type="checkbox" name="curse" value="o" tabindex="28">Other</label>
+                    </fieldset>
+
+                    <label for="mark">Average grade in High School </label>
+                    <input type="range" min="0" max="12" name="mark" id="mark" tabindex="40"
+                           value="1" required>
+                    <output for="mark" form="invite"></output>
+
+                    <label for="about">Describe yourself in 3 sentences</label>
+                    <textarea name="about" id="about" cols="30" rows="10" tabindex="50"></textarea>
+                    <button type="button" class="btn-clean" data-action="clean"></button>
+
+                    <button type="submit" tabindex="100">Send</button>
+                    <button type="reset">Clear</button>
+                </div>
+            </form>
+        </div>
+
+    </div>
+
+    <footer></footer>
+    <script src="script.js"></script>
+</body>
+</html>
