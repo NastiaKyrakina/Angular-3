@@ -5,17 +5,20 @@
     <title>Yolo Universe</title>
     <link rel="stylesheet" href="reset.css">
     <link rel="stylesheet" href="main.css">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+
 </head>
 <body>
     <header></header>
 
     <div class="main">
         <div class="form-block">
-            <form method="post" action="" id="invite">
+            <form method="post" action="https://my-json-server.typicode.com/NastiaKyrakina/Angular-3/users/" id="invite">
                 <div class="inner-box">
                     <fieldset>
                         <legend>Personal information:</legend>
-                        <label for="fname">First name</label>
+                        <label for="fname"><i class="fas fa-exclamation-circle required"></i> First name</label>
 
                         <input type="text" name="fname" id="fname" tabindex="1" autofocus
                                required minlength="2" maxlength="30" >
@@ -28,7 +31,7 @@
 
                         <label for="date">Date of birth (dd.mm.yyyy)</label>
                         <input type="date" name="date" id="date" tabindex="3"
-                                required min="1900-01-01" max="2015-01-01" placeholder="yyyy-mm-dd">
+                                required min="1900-01-01" max="2015-01-01" placeholder="yyyy-mm-dd" value="2000-01-01">
                            <div>
 
                             <label><input type="radio" name="gender" value="m" tabindex="4">Male</label>
@@ -46,9 +49,9 @@
                     <button type="button" class="btn-clean" data-action="clean"></button>
 
                     <datalist id="country-list">
-                        <option value="uk">Ukraine</option>
-                        <option value="usa">USA</option>
-                        <option value="fn">Finland</option>
+                        <option>Ukraine</option>
+                        <option>USA</option>
+                        <option>Finland</option>
                     </datalist>
 
                     <fieldset>
@@ -62,15 +65,15 @@
 
                     <fieldset>
                         <legend>Select curses</legend>
-                        <label><input type="checkbox" name="curse" value="m" tabindex="20">Math</label>
-                        <label><input type="checkbox" name="curse" value="f" tabindex="21">Programming</label>
-                        <label><input type="checkbox" name="curse" value="o" tabindex="22">Other</label>
-                        <label><input type="checkbox" name="curse" value="m" tabindex="23">Math</label>
-                        <label><input type="checkbox" name="curse" value="f" tabindex="24">Programming</label>
-                        <label><input type="checkbox" name="curse" value="o" tabindex="25">Other</label>
-                        <label><input type="checkbox" name="curse" value="m" tabindex="26">Math</label>
-                        <label><input type="checkbox" name="curse" value="f" tabindex="27">Programming</label>
-                        <label><input type="checkbox" name="curse" value="o" tabindex="28">Other</label>
+                        <label><input type="checkbox" name="curse" value="af" tabindex="20">Accounting & Finance</label>
+                        <label><input type="checkbox" name="curse" value="arc" tabindex="21">Archaeology</label>
+                        <label><input type="checkbox" name="curse" value="ch" tabindex="22">Chemistry</label>
+                        <label><input type="checkbox" name="curse" value="cah" tabindex="23">Classics & Ancient History</label>
+                        <label><input type="checkbox" name="curse" value="mt" tabindex="24">Mathematics</label>
+                        <label><input type="checkbox" name="curse" value="ms" tabindex="25">Music</label>
+                        <label><input type="checkbox" name="curse" value="me" tabindex="26">Mechanical Engineering</label>
+                        <label><input type="checkbox" name="curse" value="rb" tabindex="27">Robotics</label>
+                        <label><input type="checkbox" name="curse" value="ss" tabindex="28">Sports Science</label>
                     </fieldset>
 
                     <label for="mark">Average grade in High School </label>
@@ -84,10 +87,16 @@
 
                     <button type="submit" tabindex="100">Send</button>
                     <button type="reset">Clear</button>
+
+                    <div class="send-status"></div>
+
                 </div>
             </form>
         </div>
 
+        <div class="susses">
+            OK!
+        </div>
     </div>
 
     <footer></footer>

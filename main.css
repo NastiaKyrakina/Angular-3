@@ -28,7 +28,41 @@ input[type="checkbox"]{
 /*Bottons style*/
 .btn-clean{
     display: inline-block;
-    width: 20px;
+    background-color: transparent;
+    border: none;
+    /*width: 20px;
     height: 20px;
-    background-color: dimgrey;
+    background-color: dimgrey;*/
+    text-align: center;
+
+}
+.btn-clean:after{
+    content: "×";
+    color: dimgrey;
+    font-size: 1.6em;
+
+}
+
+
+.required{
+    color: #edff5e;
+}
+
+.send-status{
+
+}
+
+.progress{
+    display: block;
+}
+.progress:after{
+    content: "Sending...";
+}
+
+
+
+.susses{
+    display: none;
+    width: 40%;
+    background-color: darkolivegreen;
 }

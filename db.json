@@ -2,11 +2,55 @@
   "users": [
     {
       "id": 1,
-      "name": "Anna"
+      "fname": "Anna",
+      "lname": "Smit",
+      "date": "2000-01-05",
+      "gender": "f",
+      "email": "anna@gmail.com",
+      "curses": ["af", "rb", "ss", "mt"],
+      "mark": 10,
+      "country": "UK",
+      "address": "",
+      "about": "Cool girl"
     },
     {
       "id": 2,
-      "name": "Ivan"
+      "fname": "Ivan",
+      "lname": "Milovar",
+      "date": "1996-03-07",
+      "gender": "m",
+      "email": "ivan@gmail.com",
+      "curses": ["arc", "ms", "rb", "ss"],
+      "mark": 9,
+      "country": "UK",
+      "address": "",
+      "about": "Cool boy"
+    },
+    {
+      "id": 3,
+      "fname": "Ivan",
+      "lname": "Milovar",
+      "date": "1996-03-07",
+      "gender": "m",
+      "email": "ivan@gmail.com",
+      "curses": ["math", "science"],
+      "mark": 9,
+      "country": "UK",
+      "address": "",
+      "about": "Cool boy"
+    },
+    {
+      "id": 3,
+      "fname": "Undina",
+      "lname": "Siin",
+      "date": "1992-10-12",
+      "gender": "f",
+      "email": "undina@gmail.com",
+      "curses": ["me", "mt", "cah"],
+      "mark": 4,
+      "country": "UK",
+      "address": "",
+      "about": "Cool boy"
     }
   ]
 }
