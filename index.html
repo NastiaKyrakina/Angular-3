@@ -21,22 +21,23 @@
                         <label for="fname"><i class="fas fa-exclamation-circle required"></i> First name</label>
 
                         <input type="text" name="fname" id="fname" tabindex="1" autofocus
-                               required minlength="2" maxlength="30" >
+                               required maxlength="30" >
                         <button type="button" class="btn-clean" data-action="clean"></button>
 
                         <label for="lname">Last name</label>
                         <input type="text" name="lname" id="lname" tabindex="2"
-                               required minlength="1" maxlength="30">
+                               required maxlength="30">
                         <button type="button" class="btn-clean" data-action="clean"></button>
 
                         <label for="date">Date of birth (dd.mm.yyyy)</label>
                         <input type="date" name="date" id="date" tabindex="3"
-                                required min="1900-01-01" max="2015-01-01" placeholder="yyyy-mm-dd" value="2000-01-01">
+                                required min = "1999-01-01" max="2015-01-01" placeholder="yyyy-mm-dd" value="2000-01-01">
                            <div>
 
                             <label><input type="radio" name="gender" value="m" tabindex="4">Male</label>
                             <label><input type="radio" name="gender" value="f" tabindex="5">Female</label>
                             <label><input type="radio" name="gender" value="o" tabindex="6">Other</label>
+                            <div class="error gender-error"></div>
                         </div>
                     </fieldset>
 
@@ -57,29 +58,32 @@
                     <fieldset>
                         <legend>Type your address</legend>
                         <input type="text" name="address-1" id="address-1" tabindex="9"
-                               required maxlength="50" >
+                               required maxlength="50" placeholder="city name, street name, house number, apartment number">
                         <button type="button" class="btn-clean" data-action="clean"></button>
                         <input type="text" name="address-2" id="address-2" maxlength="50">
                         <button type="button" class="btn-clean" data-action="clean"></button>
                     </fieldset>
 
                     <fieldset>
-                        <legend>Select curses</legend>
-                        <label><input type="checkbox" name="curse" value="af" tabindex="20">Accounting & Finance</label>
-                        <label><input type="checkbox" name="curse" value="arc" tabindex="21">Archaeology</label>
-                        <label><input type="checkbox" name="curse" value="ch" tabindex="22">Chemistry</label>
-                        <label><input type="checkbox" name="curse" value="cah" tabindex="23">Classics & Ancient History</label>
-                        <label><input type="checkbox" name="curse" value="mt" tabindex="24">Mathematics</label>
-                        <label><input type="checkbox" name="curse" value="ms" tabindex="25">Music</label>
-                        <label><input type="checkbox" name="curse" value="me" tabindex="26">Mechanical Engineering</label>
-                        <label><input type="checkbox" name="curse" value="rb" tabindex="27">Robotics</label>
-                        <label><input type="checkbox" name="curse" value="ss" tabindex="28">Sports Science</label>
+                        <legend>Select course</legend>
+                        <label><input type="checkbox" name="course" value="af" tabindex="20">Accounting & Finance</label>
+                        <label><input type="checkbox" name="course" value="arc" tabindex="21">Archaeology</label>
+                        <label><input type="checkbox" name="course" value="ch" tabindex="22">Chemistry</label>
+                        <label><input type="checkbox" name="course" value="cah" tabindex="23">Classics & Ancient History</label>
+                        <label><input type="checkbox" name="course" value="mt" tabindex="24">Mathematics</label>
+                        <label><input type="checkbox" name="course" value="ms" tabindex="25">Music</label>
+                        <label><input type="checkbox" name="course" value="me" tabindex="26">Mechanical Engineering</label>
+                        <label><input type="checkbox" name="course" value="rb" tabindex="27">Robotics</label>
+                        <label><input type="checkbox" name="course" value="ss" tabindex="28">Sports Science</label>
+                        <div class="error courses-error"></div>
                     </fieldset>
 
                     <label for="mark">Average grade in High School </label>
-                    <input type="range" min="0" max="12" name="mark" id="mark" tabindex="40"
+                    <span class="range-min">1</span>
+                    <input type="range" min="1" max="12" name="mark" id="mark" tabindex="40"
                            value="1" required>
-                    <output for="mark" form="invite"></output>
+                    <span class="range-max">12</span>
+                    <output for="mark"></output>
 
                     <label for="about">Describe yourself in 3 sentences</label>
                     <textarea name="about" id="about" cols="30" rows="10" tabindex="50"></textarea>
@@ -100,6 +104,8 @@
     </div>
 
     <footer></footer>
+    <script src="localStorage.js"></script>
+    <script src="validation.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

@@ -1,33 +1,40 @@
+
+function getMinDate(years){
+    let curDate = new Date();
+    let month = curDate.getMonth()+1;
+    return `${curDate.getFullYear()-years}-${(month<10)&&'0'+month}-${curDate.getDate()}`;
+}
+
+function setRangeValue(value){
+    document.querySelector("output[for='mark']").innerText=value;
+}
+
 (function () {
+    //import {delIncorrectSimvol, textCorrect} from "./validation";
+
     const STATUS = "status";
+    const MIN_AGE = 8;
 
-    //Функции для работы с памятью
-    //Сохранение в локальной памяти элемента
-    let setToLocale = (name, value) => {
-        try{
-            if(value instanceof Object){
-                value =  JSON.stringify(value);
-            }
-            localStorage.setItem(name, value);
-        }
-        catch (error) {
-            console.log(error);
-        }
-    };
+   (function init(){
+       let inputFName = document.getElementById("fname");
+       let inputLName = document.getElementById("lname");
+       let inputDate = document.getElementById("date");
+       let inputRange = document.getElementById("mark");
+       inputFName.addEventListener("keydown", delIncorrectSimvol);
+       inputFName.addEventListener("blur", (e)=>textCorrect(e));
 
-    let getFromLocale = (name) => {
-        try{
-            return localStorage.getItem(name);
-        }
-        catch (error) {
-            console.log(error);
-            return null;
-        }
-    };
+       inputLName.addEventListener("keydown", delIncorrectSimvol);
+       inputLName.addEventListener("blur", (e)=>textCorrect(e));
 
-    let getObjFromLocale = (name) => {
-        return JSON.parse(getFromLocale(name));
-    };
+       inputDate.setAttribute("max", getMinDate(MIN_AGE));
+       console.log(inputDate);
+
+       inputRange.addEventListener("input", (e)=>setRangeValue(e.target.value));
+
+    })();
+
+
+
 
 
 
@@ -35,8 +42,7 @@
     //Общий сбор данных
 
     //Отправка на сервер
-
-    function sendData(data) {
+   function sendData(data) {
         let progress = document.querySelector('.send-status');
         progress.classList.add('progress');
         new Promise((resolve)=>setTimeout(resolve, 2000)).
@@ -89,8 +95,38 @@
 
 
 
+    let getCheckedCourses = ()=>{
+        let courses;
+        courses = [].map.call(document.querySelectorAll("[name='course']:checked"),
+                (elem)=>{return elem.value});
 
+        return courses.length? courses: null;
+    };
 
+    let isCoursesCorrect = ()=>{
+        let courses = getCheckedCourses();
+        if(!courses){
+            let errorBlock = document.querySelector(".courses-error");
+            errorBlock.innerText = "Please select at least one course.";
+            return false;
+        }
+        return courses;
+    };
+
+    let isGenderCorrect = ()=>{
+
+        let gender;
+        try{
+            gender = document.querySelector("[name='gender']:checked").value;
+
+        }
+        catch (e) {
+            console.log(e.message);
+            let errorBlock = document.querySelector(".gender-error");
+            errorBlock.innerText = "Please choose your gender.";
+        }
+        return gender;
+    };
 
     let getData = () => {
 
@@ -98,7 +134,10 @@
         data.fname = document.getElementById("fname").value;
         data.lname = document.getElementById("lname").value;
         data.date = document.getElementById("date").value;
-        data.gender = document.querySelector("[name='gender']:checked").value;
+
+        data.gender = isGenderCorrect();
+
+
 
         data.email = document.getElementById("email").value;
         data.country = document.getElementById("country").value;
@@ -109,8 +148,11 @@
 
         data.mark = document.getElementById("mark").value;
 
-        data.curses = [].map.call(document.querySelectorAll("[name='curse']:checked"),
-                                    (elem)=>{return elem.value});
+        data.curses = isCoursesCorrect();
+        if(!data.curses){
+            return false;
+        }
+
         if(data.curses.lenght == 0){
             //исключение
         }
@@ -120,11 +162,11 @@
 
 
     let elem = document.getElementById('lname');
+
 elem.addEventListener("blur",
     (event)=>{
     console.log(event.target.value);
     window.localStorage.setItem('lname', event.target.value);
-        getData();
         /*
     fetch('https://my-json-server.typicode.com/NastiaKyrakina/Angular-3/users/3')
             .then(response => response.json())
@@ -166,7 +208,9 @@ form.addEventListener("click", function(e){
 function submitForm(event) {
     event.preventDefault();
     let data = getData();
+    if(data){
     sendData(data);
+    }
 }
 
 form.addEventListener('submit', submitForm);
