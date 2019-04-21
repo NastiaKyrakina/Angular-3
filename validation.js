@@ -44,3 +44,13 @@ function textCorrect(e){
     event.target.value = text;
     setToLocale(event.target.name, event.target.value);
 }
+
+function getMinDate(years){
+    let curDate = new Date();
+    let month = curDate.getMonth()+1;
+    return `${curDate.getFullYear()-years}-${(month<10)&&'0'+month}-${curDate.getDate()}`;
+}
+
+function setRangeValue(value){
+    document.querySelector("output[for='mark']").innerText=value;
+}

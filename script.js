@@ -1,12 +1,12 @@
+function getCountryList(){
+    let countryList;
 
-function getMinDate(years){
-    let curDate = new Date();
-    let month = curDate.getMonth()+1;
-    return `${curDate.getFullYear()-years}-${(month<10)&&'0'+month}-${curDate.getDate()}`;
-}
+    fetch('https://my-json-server.typicode.com/NastiaKyrakina/Angular-3/countries')
+        .then(response => response.json())
+        .then(data => {countryList=data; console.log(data)}).
+    catch(reject=>console.log(reject));
 
-function setRangeValue(value){
-    document.querySelector("output[for='mark']").innerText=value;
+
 }
 
 (function () {

@@ -1,5 +1,4 @@
-{
-  "users": [
+{ "users": [
     {
       "id": 1,
       "fname": "Anna",
@@ -88,10 +87,6 @@
       "code": "AI"
     },
     {
-      "name": "Antarctica",
-      "code": "AQ"
-    },
-    {
       "name": "Antigua and Barbuda",
       "code": "AG"
     },
@@ -132,14 +127,6 @@
       "code": "BD"
     },
     {
-      "name": "Barbados",
-      "code": "BB"
-    },
-    {
-      "name": "Belarus",
-      "code": "BY"
-    },
-    {
       "name": "Belgium",
       "code": "BE"
     },
@@ -170,10 +157,6 @@
     {
       "name": "Botswana",
       "code": "BW"
-    },
-    {
-      "name": "Bouvet Island",
-      "code": "BV"
     },
     {
       "name": "Brazil",
@@ -256,20 +239,12 @@
       "code": "CG"
     },
     {
-      "name": "Congo, The Democratic Republic of the",
-      "code": "CD"
-    },
-    {
       "name": "Cook Islands",
       "code": "CK"
     },
     {
       "name": "Costa Rica",
       "code": "CR"
-    },
-    {
-      "name": "Cote D\"Ivoire",
-      "code": "CI"
     },
     {
       "name": "Croatia",
@@ -300,10 +275,6 @@
       "code": "DM"
     },
     {
-      "name": "Dominican Republic",
-      "code": "DO"
-    },
-    {
       "name": "Ecuador",
       "code": "EC"
     },
@@ -314,10 +285,6 @@
     {
       "name": "El Salvador",
       "code": "SV"
-    },
-    {
-      "name": "Equatorial Guinea",
-      "code": "GQ"
     },
     {
       "name": "Eritrea",
@@ -996,16 +963,8 @@
       "code": "UZ"
     },
     {
-      "name": "Vanuatu",
-      "code": "VU"
-    },
-    {
       "name": "Venezuela",
       "code": "VE"
-    },
-    {
-      "name": "Viet Nam",
-      "code": "VN"
     },
     {
       "name": "Virgin Islands, British",
@@ -1036,8 +995,4 @@
       "code": "ZW"
     }
   ]
-
-
 }
-
-
