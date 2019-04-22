@@ -1,5 +1,6 @@
 ;
-//Функции для работы с памятью
+//Функции для работы с локальной памятью
+
 //Сохранение в локальной памяти элемента
 let setToLocale = (name, value) => {
     try{
@@ -13,6 +14,7 @@ let setToLocale = (name, value) => {
     }
 };
 
+//Получение данных
 let getFromLocale = (name) => {
     try{
         return localStorage.getItem(name);
@@ -23,6 +25,10 @@ let getFromLocale = (name) => {
     }
 };
 
+//Получение объекта данных
 let getObjFromLocale = (name) => {
     return JSON.parse(getFromLocale(name));
 };
+
+
+

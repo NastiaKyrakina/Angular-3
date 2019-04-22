@@ -1,0 +1,333 @@
+/*Общие стили*/
+
+.row{
+    display: flex;
+
+}
+
+.main, fieldset .row{
+    flex-flow: column;
+}
+
+.column{
+    flex: 1;
+}
+
+h1, h2{
+    text-align: center;
+}
+
+h1{
+    font-size: 2em;
+    margin-bottom: 1em;
+}
+
+h2{
+    font-size: 1.2em;
+}
+
+.susses, .form-block{
+    margin: 20px auto;
+    width: 90%;
+}
+
+/*Стили формы*/
+.inner-box{
+    display: flex;
+    flex-flow: column;
+    border: 1px solid black;
+    box-shadow: 2px -2px 2px black;
+    padding: 10px;
+}
+
+.main-box{
+    margin: 1em 0;
+    padding: 0  0.4em 1em 0.4em;
+    border: 2px dashed #59574b;
+}
+
+label, legend{
+    font-size: 1.2em;
+    margin-top: 0.5em;
+
+}
+legend{
+    margin-bottom: 0.5em;
+    padding-top: 0.5em;
+}
+
+label {
+    display: block;
+    padding: 5px;
+}
+
+input[type='text'],
+input[type='email'],
+input[type='date'],
+input[list='country-list']
+{
+    display: block;
+    padding: 0.2em;
+    font-size: 1.2em;
+    color: darkslategrey;
+    font-weight: bold;
+}
+
+.input-cover{
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+
+input[type="radio"],
+input[type="checkbox"]{
+    display: inline-block;
+
+}
+
+/*Форматирование радиобоксов*/
+.gender label{
+    display: inline-block;
+    margin: 5px 0;
+    padding: 0;
+    cursor: pointer;
+}
+.gender .decorator{
+
+    border: 1px solid #1d3232;
+    padding: 6px;
+    background-image: linear-gradient(to bottom, silver, white);
+}
+
+.gender .decorator:first-of-type{
+    border-bottom-left-radius: 5px;
+    border-top-left-radius: 5px;
+}
+
+.gender .decorator:last-of-type{
+    border-bottom-right-radius: 5px;
+    border-top-right-radius: 5px;
+
+}
+.gender .decorator:hover{
+    background-image: linear-gradient(to bottom, #9fc088, #e8ffe6);
+
+}
+.gender :checked + .decorator{
+    background-image: linear-gradient(to bottom, #a7c059, #bfff86);
+
+}
+
+.gender input{
+    display: none;
+    margin: 0;
+}
+
+/*Range input style*/
+
+input[type=range]::-webkit-slider-thumb {
+    height: 20px;
+    width: 20px;
+    border-radius: 25%;
+    background-color: #035505;
+    cursor: pointer;
+    box-shadow: 1px 1px 1px #000000, 0 0 1px #0d0d0d;
+}
+
+input[type=range]::-webkit-slider-thumb:hover{
+    transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    box-shadow: 2px 0 3px #16860f;
+}
+
+input[type=range]::-moz-range-thumb {
+    box-shadow: 1px 1px 1px #000000, 0 0 1px #0d0d0d;
+    height: 20px;
+    width: 20px;
+    border-radius: 25%;
+    background-color: #035505;
+    cursor: pointer;
+    border: 0;
+}
+
+input[type=range]::-moz-range-thumb:hover{
+    transform: scale(1.2);
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    box-shadow: 2px 0 3px #16860f;
+}
+input[type=range]::-webkit-slider-runnable-track {
+    width: 100%;
+    font-size: 1.4em;
+    cursor: pointer;
+    background: #ddffd6;
+    border-radius: 10px;
+    border: 1px solid #d2d2d2;
+}
+
+input[type=range]::-webkit-slider-runnable-track:hover {
+    box-shadow: 2px 0 3px #37e060;
+}
+
+input[type=range]::-moz-range-track {
+    width: 100%;
+    height: 20px;
+    font-size: 1.4em;
+    cursor: pointer;
+    background: #ddffd6;
+    border-radius: 10px;
+    border: 1px solid #d2d2d2;
+}
+
+input[type=range]::-moz-range-track:hover {
+    box-shadow: 2px 0 3px #37e060;
+
+}
+.range{
+    background-color: #7b8666;
+    border-radius: 10px;
+}
+.range-diap{
+    padding: 10px;
+    font-weight: bold;
+}
+
+output{
+    display: inline-block;
+    border: 1px solid #7b8666;
+    border-radius: 10px;
+    padding: 5px 10px;
+}
+
+
+/*Bottons style*/
+.button-group{
+    justify-content: space-between;
+}
+.btn{
+    font-size: 20px;
+    font-weight: bold;
+    margin: 10px;
+    padding: 10px;
+}
+
+.btn-submit{
+    -webkit-transition: width  1s ease-out 0.5s;
+    -moz-transition: width  1s ease-out 0.5s;
+    -o-transition: width  1s ease-out 0.5s;
+    transition: width  1s  ease-out 0.5s;
+    border: 1px solid #97a527;
+    background-image: linear-gradient(to bottom, #a7c059, #bfff86);
+    color: #1d3232;
+    width: 70%;
+}
+
+.btn-submit:hover{
+    width: 80%;
+}
+
+
+.btn-reset{
+    color: dimgrey;
+    text-decoration: underline #1d3232 ;
+}
+
+.btn-clean{
+    display: inline-block;
+    background-color: transparent;
+    border: none;
+    text-align: center;
+
+}
+.btn-clean:after{
+    content: "×";
+    color: dimgrey;
+    font-size: 1.6em;
+
+}
+
+.back-btn{
+    color: #59574b;
+    border: #59574b;
+    border-radius: 5px;
+    background-color: #9fc088;
+}
+
+
+/*Дополнительные надписи*/
+.required{
+    color: #ffa01f;
+    margin-right: 0.4em;
+
+}
+
+.progress{
+    display: block;
+    color: #035505;
+    font-size: 2em;
+}
+
+.progress:after{
+    content: "Sending...";
+}
+
+/*Окно, сообщающее об успешном заполнении формы*/
+.susses{
+    display: none;
+    width: 60%;
+    background-color: #b1d659;
+    border: 2px dashed #035505;
+    padding: 20px;
+}
+
+.susses p{
+    margin: 5px;
+    font-size: 1.2em;
+}
+
+/*вывод ошибок*/
+.error{
+    margin: 10px;
+    color: #69211b;
+    font-weight: bold;
+}
+
+/*Медиа запросы*/
+@media (min-width: 450px){
+    input[type='text'],
+    input[type='email'],
+    input[type='date'],
+    input[list='country-list']
+    {
+        width: 90%;
+    }
+
+    h1{
+        font-size: 3em;
+        margin-bottom: 1em;
+    }
+
+    h2{
+        font-size: 2em;
+    }
+
+    .btn-submit{
+        width: 300px;
+    }
+}
+
+@media (min-width: 750px) {
+
+    fieldset .row{
+        flex-flow: row;
+    }
+
+    .form-block{
+        margin: 20px auto;
+        width: 50%;
+    }
+
+
+
+}

@@ -2,96 +2,132 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Yolo Universe</title>
-    <link rel="stylesheet" href="reset.css">
-    <link rel="stylesheet" href="main.css">
+    <title>Avalon Academy</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+
+    <link rel="stylesheet" href="style/reset.css">
+    <link rel="stylesheet" href="style/main.css">
 
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
 </head>
 <body>
-    <header></header>
+    <header>
+        <h1>Avalon Academy</h1>
 
-    <div class="main">
+    </header>
+
+    <div class="main row">
         <div class="form-block">
+            <h2>Join us</h2>
             <form method="post" action="https://my-json-server.typicode.com/NastiaKyrakina/Angular-3/users/" id="invite">
                 <div class="inner-box">
-                    <fieldset>
-                        <legend>Personal information:</legend>
-                        <label for="fname"><i class="fas fa-exclamation-circle required"></i> First name</label>
+                    <fieldset class="main-box">
+                        <legend>Personal information</legend>
+                        <label for="fname">First name</label>
+                        <div class="input-cover">
+                            <input type="text" name="fname" id="fname" tabindex="1" autofocus
+                                   required maxlength="30" >
+                            <button type="button" class="btn-clean" data-action="clean"></button>
+                        </div>
 
-                        <input type="text" name="fname" id="fname" tabindex="1" autofocus
-                               required maxlength="30" >
-                        <button type="button" class="btn-clean" data-action="clean"></button>
 
                         <label for="lname">Last name</label>
-                        <input type="text" name="lname" id="lname" tabindex="2"
-                               required maxlength="30">
-                        <button type="button" class="btn-clean" data-action="clean"></button>
-
+                        <div class="input-cover">
+                            <input type="text" name="lname" id="lname" tabindex="2"
+                                   required maxlength="30">
+                            <button type="button" class="btn-clean" data-action="clean"></button>
+                        </div>
                         <label for="date">Date of birth (dd.mm.yyyy)</label>
+                        <div class="input-cover">
                         <input type="date" name="date" id="date" tabindex="3"
-                                required min = "1999-01-01" max="2015-01-01" placeholder="yyyy-mm-dd" value="2000-01-01">
-                           <div>
+                                required min = "1900-01-01" max="2015-01-01" placeholder="dd.mm.yyyy">
+                        </div>
 
-                            <label><input type="radio" name="gender" value="m" tabindex="4">Male</label>
-                            <label><input type="radio" name="gender" value="f" tabindex="5">Female</label>
-                            <label><input type="radio" name="gender" value="o" tabindex="6">Other</label>
+                        <fieldset class="gender">
+                            <legend>Choose your gender:</legend>
+                            <label><input type="radio" name="gender" value="m" tabindex="4">
+                                <span class="decorator">Male</span></label>
+                            <label><input type="radio" name="gender" value="f" tabindex="5">
+                                <span class="decorator">Female</span></label>
+                            <label><input type="radio" name="gender" value="o" tabindex="6">
+                                <span class="decorator">Other</span></label>
                             <div class="error gender-error"></div>
+                        </fieldset>
+                    </fieldset>
+
+                    <fieldset class="main-box">
+                        <legend>Contacts and Address:</legend>
+                        <label for="email">E-mail</label>
+                        <div class="input-cover">
+                        <input type="email" name="email" id="email" maxlength="254" required tabindex="7">
+                        <button type="button" class="btn-clean" data-action="clean"></button>
+                        </div>
+
+                        <label for="country">Country</label>
+                        <div class="input-cover">
+                            <input name="country" id="country" list="country-list" required tabindex="8">
+                            <button type="button" class="btn-clean" data-action="clean"></button>
+                        </div>
+                        <div class="error country-error"></div>
+                        <datalist id="country-list"></datalist>
+
+                        <fieldset>
+                            <legend>Type your address</legend>
+                                <div class="input-cover">
+                                    <input type="text" name="address-1" id="address-1" tabindex="9"
+                                           required maxlength="50" placeholder="city name, street name">
+                                    <button type="button" class="btn-clean" data-action="clean"></button>
+                                </div>
+                                <div class="input-cover">
+                                    <input type="text" name="address-2" id="address-2" maxlength="50" placeholder="house number, apartment number">
+                                    <button type="button" class="btn-clean" data-action="clean"></button>
+                                </div>
+                        </fieldset>
+                    </fieldset>
+
+                    <fieldset class="main-box">
+                        <legend>Education</legend>
+                        <fieldset class="row">
+                            <legend>Select courses:</legend>
+                            <div class="row">
+                            <div class="column">
+                                <label><input type="checkbox" name="course" value="af" tabindex="20">Accounting & Finance</label>
+                                <label><input type="checkbox" name="course" value="arc" tabindex="21">Archaeology</label>
+                                <label><input type="checkbox" name="course" value="ch" tabindex="22">Chemistry</label>
+                            </div>
+                            <div class="column">
+                                <label><input type="checkbox" name="course" value="cah" tabindex="23">Classics & Ancient History</label>
+                                <label><input type="checkbox" name="course" value="mt" tabindex="24">Mathematics</label>
+                                <label><input type="checkbox" name="course" value="ms" tabindex="25">Music</label>
+                            </div>
+                            <div class="column">
+                                <label><input type="checkbox" name="course" value="me" tabindex="26">Mechanical Engineering</label>
+                                <label><input type="checkbox" name="course" value="rb" tabindex="27">Robotics</label>
+                                <label><input type="checkbox" name="course" value="ss" tabindex="28">Sports Science</label>
+                            </div>
+                            </div>
+                                <div class="error courses-error"></div>
+                        </fieldset>
+
+                        <label for="mark">Average grade in High School: <output for="mark">1</output></label>
+                        <div class="input-cover range">
+                            <span class="range-diap">1</span>
+                            <input type="range" min="1" max="12" name="mark" id="mark" tabindex="40"
+                                   value="1" required>
+                            <span class="range-diap">12</span>
                         </div>
                     </fieldset>
 
-                    <label for="email">E-mail</label>
-                    <input type="email" name="email" id="email" maxlength="254" tabindex="7">
-                    <button type="button" class="btn-clean" data-action="clean"></button>
-
-                    <label for="country">Country</label>
-                    <input name="country" id="country" list="country-list" required tabindex="8">
-                    <button type="button" class="btn-clean" data-action="clean"></button>
-
-                    <datalist id="country-list">
-                        <option>Ukraine</option>
-                        <option>USA</option>
-                        <option>Finland</option>
-                    </datalist>
-
-                    <fieldset>
-                        <legend>Type your address</legend>
-                        <input type="text" name="address-1" id="address-1" tabindex="9"
-                               required maxlength="50" placeholder="city name, street name, house number, apartment number">
-                        <button type="button" class="btn-clean" data-action="clean"></button>
-                        <input type="text" name="address-2" id="address-2" maxlength="50">
-                        <button type="button" class="btn-clean" data-action="clean"></button>
-                    </fieldset>
-
-                    <fieldset>
-                        <legend>Select course</legend>
-                        <label><input type="checkbox" name="course" value="af" tabindex="20">Accounting & Finance</label>
-                        <label><input type="checkbox" name="course" value="arc" tabindex="21">Archaeology</label>
-                        <label><input type="checkbox" name="course" value="ch" tabindex="22">Chemistry</label>
-                        <label><input type="checkbox" name="course" value="cah" tabindex="23">Classics & Ancient History</label>
-                        <label><input type="checkbox" name="course" value="mt" tabindex="24">Mathematics</label>
-                        <label><input type="checkbox" name="course" value="ms" tabindex="25">Music</label>
-                        <label><input type="checkbox" name="course" value="me" tabindex="26">Mechanical Engineering</label>
-                        <label><input type="checkbox" name="course" value="rb" tabindex="27">Robotics</label>
-                        <label><input type="checkbox" name="course" value="ss" tabindex="28">Sports Science</label>
-                        <div class="error courses-error"></div>
-                    </fieldset>
-
-                    <label for="mark">Average grade in High School </label>
-                    <span class="range-min">1</span>
-                    <input type="range" min="1" max="12" name="mark" id="mark" tabindex="40"
-                           value="1" required>
-                    <span class="range-max">12</span>
-                    <output for="mark"></output>
-
                     <label for="about">Describe yourself in 3 sentences</label>
-                    <textarea name="about" id="about" cols="30" rows="10" tabindex="50"></textarea>
+                    <textarea name="about" id="about" cols="30" rows="5" maxlength="200" tabindex="50"></textarea>
                     <button type="button" class="btn-clean" data-action="clean"></button>
 
-                    <button type="submit" tabindex="100">Send</button>
-                    <button type="reset">Clear</button>
-
+                    <div class="row button-group">
+                        <button type="submit" tabindex="100" class="btn btn-submit">Send</button>
+                        <button type="reset" class="btn btn-reset">Clear</button>
+                    </div>
+                    <div class="error form-error"></div>
                     <div class="send-status"></div>
 
                 </div>
@@ -99,13 +135,18 @@
         </div>
 
         <div class="susses">
-            OK!
+            <h1>Everything OK!</h1>
+            <h2><span id="user-name"></span>, your form has been sent for review</h2>
+            <p>Further instructions will be sent to your email.</p>
+            <p>Have a nice day!</p>
+            <button class="btn back-btn" id="back">Back</button>
         </div>
     </div>
 
     <footer></footer>
-    <script src="localStorage.js"></script>
-    <script src="validation.js"></script>
-    <script src="script.js"></script>
+    <script src="scripts/localStorage.js"></script>
+    <script src="scripts/validation.js"></script>
+    <script src="scripts/init_date.js"></script>
+    <script src="scripts/script.js"></script>
 </body>
 </html>

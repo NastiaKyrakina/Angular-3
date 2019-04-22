@@ -34,8 +34,16 @@ table {
 	border-spacing: 0;
 }
 
+button{
+	padding: 0;
+	border: none;
+	font: inherit;
+	color: inherit;
+	background-color: transparent;
+	cursor: pointer;
+}
 /* reset slider style */
-/*
+
 input[type="range"] {
 	-webkit-appearance: none;
 	-moz-appearance: none;
@@ -52,4 +60,4 @@ input[type=range]:hover {
 	border: 0;
 	box-shadow: none;
 }
-*/
+

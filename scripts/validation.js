@@ -1,3 +1,6 @@
+;
+/*Функции проверки данных*/
+
 /*
    * Разрешает вводить только буквенные символы(английский, украинский, русский алфавит) и символы разделители
    * */
@@ -37,6 +40,7 @@ function formattingName(text) {
     return newText;
 }
 
+/*Общая проверка ввода*/
 function textCorrect(e){
     let text = e.target.value;
     text = trim(text);
@@ -45,12 +49,66 @@ function textCorrect(e){
     setToLocale(event.target.name, event.target.value);
 }
 
-function getMinDate(years){
+/*Установка максимальной даты, в зависимости от текущей*/
+function getMaxDate(years){
     let curDate = new Date();
     let month = curDate.getMonth()+1;
     return `${curDate.getFullYear()-years}-${(month<10)&&'0'+month}-${curDate.getDate()}`;
 }
 
-function setRangeValue(value){
-    document.querySelector("output[for='mark']").innerText=value;
-}
+/*Проверка корректности введенного названия страны*/
+let isCountryCorrect = (country)=>{
+    let countries = [].map.call(document.querySelectorAll(
+        '#country-list option'), (country)=>country.innerText);
+
+    let errorBlock = document.querySelector(".country-error");
+    if(countries.indexOf(country)!==-1){
+        setToLocale('country', country );
+        errorBlock.innerText = "";
+    }
+    else{
+        errorBlock.innerText = "Unknown country name. Please select country from the list.";
+        return false;
+    }
+};
+
+/*Получения данных выбранных курсов*/
+let getCheckedCourses = ()=>{
+    let courses;
+    courses = [].map.call(document.querySelectorAll("[name='course']:checked"),
+        (elem)=>{return elem.value});
+
+    return courses.length? courses: null;
+};
+
+/*Проверка, выбран ли хотя бы один курс*/
+let isCoursesCorrect = ()=>{
+    let courses = getCheckedCourses();
+    let errorBlock = document.querySelector(".courses-error");
+    if(!courses){
+
+        errorBlock.innerText = "Please select at least one course.";
+        return false;
+    }
+    errorBlock.innerText="";
+    setToLocale('course', courses);
+    return courses;
+};
+
+/*Проверка, выбран ли пол*/
+let isGenderCorrect = ()=>{
+
+    let gender;
+    try{
+        gender = document.querySelector("[name='gender']:checked").value;
+        setToLocale('gender', gender );
+    }
+    catch (e) {
+        console.log(e.message);
+        let errorBlock = document.querySelector(".gender-error");
+        errorBlock.innerText = "Please choose your gender.";
+    }
+    return gender;
+};
+
+
