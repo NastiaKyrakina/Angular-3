@@ -1,9 +1,9 @@
 ;
-/*Функции проверки данных*/
+/*Data Verification Functions*/
 
 /*
-   * Разрешает вводить только буквенные символы(английский, украинский, русский алфавит) и символы разделители
-   * */
+Permits only alphabetic characters (English, Ukrainian, Russian alphabet) and delimiter characters
+ */
 function delIncorrectSimvol(e) {
     // спец. сочетание - не обрабатываем
     let key = e.key;
@@ -12,24 +12,24 @@ function delIncorrectSimvol(e) {
     if (key.search(reg) === -1) e.preventDefault();
 }
 
-/*Удаление лишних пробельных символов*/
+/*Remove extra whitespace characters*/
 function trim(text) {
     text = text.trim();
     return text.replace(/\s+/g, " ");
 }
 
-/*Преобразование строки имени/фамилии к коректному виду (первые буквы заглавные)
-*Работает с несколькими словами на случай если имя/фамилия содержат несколько слов
-*или состоит из слов, разделенных апострофом или дефисом*/
+/*Conversion of the first / last name string to the correct form (first capital letters)
+* Works with several words in case the name contains several words.
+* or consists of words separated by an apostrophe or a hyphen*/
 function formattingName(text) {
     let newText="";
     let offset = 0;
 
-    //создание массива из слов, которые начинаються с заглавной буквы
+    //the creation of an array of words that begin with a capital letter
     let words = text.toLowerCase().split(/[\s`ʼ-]+/)
         .map(word=>word.charAt(0).toUpperCase()+word.slice(1));
 
-    //соединение слов обратно через символы, которые были изначально
+    //connecting words back through the characters that were originally
     for(let i=0; i<words.length-1; i++){
         offset+=words[i].length;
         newText+=words[i];
@@ -40,7 +40,7 @@ function formattingName(text) {
     return newText;
 }
 
-/*Общая проверка ввода*/
+/*General validation*/
 function textCorrect(e){
     let text = e.target.value;
     text = trim(text);
@@ -49,20 +49,20 @@ function textCorrect(e){
     setToLocale(event.target.name, event.target.value);
 }
 
-/*Установка максимальной даты, в зависимости от текущей*/
+/*Setting the maximum date, depending on the current*/
 function getMaxDate(years){
     let curDate = new Date();
     let month = curDate.getMonth()+1;
     return `${curDate.getFullYear()-years}-${(month<10)&&'0'+month}-${curDate.getDate()}`;
 }
 
-/*Проверка корректности введенного названия страны*/
+/*Validation of the entered country name*/
 let isCountryCorrect = (country)=>{
     let countries = [].map.call(document.querySelectorAll(
         '#country-list option'), (country)=>country.innerText);
 
     let errorBlock = document.querySelector(".country-error");
-    if(countries.indexOf(country)!==-1){
+    if(countries.includes(country)){
         setToLocale('country', country );
         errorBlock.innerText = "";
     }
@@ -72,16 +72,17 @@ let isCountryCorrect = (country)=>{
     }
 };
 
-/*Получения данных выбранных курсов*/
+/*Retrieving selected course data*/
 let getCheckedCourses = ()=>{
     let courses;
+    //can't change to short style because the list that returned from querySelectorAll() not support method map()
     courses = [].map.call(document.querySelectorAll("[name='course']:checked"),
-        (elem)=>{return elem.value});
+            (elem)=>{return elem.value});
 
     return courses.length? courses: null;
 };
 
-/*Проверка, выбран ли хотя бы один курс*/
+/*Check if at least one course is selected*/
 let isCoursesCorrect = ()=>{
     let courses = getCheckedCourses();
     let errorBlock = document.querySelector(".courses-error");
@@ -95,7 +96,7 @@ let isCoursesCorrect = ()=>{
     return courses;
 };
 
-/*Проверка, выбран ли пол*/
+/*Check if the gender is selected*/
 let isGenderCorrect = ()=>{
 
     let gender;

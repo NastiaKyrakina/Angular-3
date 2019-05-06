@@ -1,15 +1,14 @@
 ;
-/*Инициализация полей и установка слушателей событий*/
+/*Initializing fields and setting event listeners*/
 function init(){
     const MIN_AGE = 8;
 
-    //Получает список стран с сервера
-    let getCountryList = () => {
+    //Gets a list of countries from the server
+    const getCountryList = () => {
         let countryList = document.getElementById("country-list");
         fetch('https://my-json-server.typicode.com/NastiaKyrakina/Angular-3/countries')
             .then(response => response.json())
             .then(data => {
-               //добавление стран в datalist
                 data.forEach(
                     country=>
                     {

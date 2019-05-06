@@ -1,8 +1,8 @@
 ;
-//Функции для работы с локальной памятью
+//Functions for working with local memory
 
-//Сохранение в локальной памяти элемента
-let setToLocale = (name, value) => {
+//Store item in local memory
+const setToLocale = (name, value) => {
     try{
         if(value instanceof Object){
             value =  JSON.stringify(value);
@@ -14,8 +14,8 @@ let setToLocale = (name, value) => {
     }
 };
 
-//Получение данных
-let getFromLocale = (name) => {
+//Data retrieval
+const getFromLocale = (name) => {
     try{
         return localStorage.getItem(name);
     }
@@ -25,9 +25,14 @@ let getFromLocale = (name) => {
     }
 };
 
-//Получение объекта данных
-let getObjFromLocale = (name) => {
+//Getting data object
+const getObjFromLocale = (name) => {
     return JSON.parse(getFromLocale(name));
+};
+
+
+const deleteKeyFromLocale = (name)=>{
+    localStorage.removeItem(name);
 };
 
 

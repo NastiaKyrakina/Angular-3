@@ -2,26 +2,26 @@
 
     const STATUS = "status";
 
-    //отображения окна об успешной регистрации
-    let displaySussesWindow = ()=>{
+    //display susses window
+    const displaySussesWindow = ()=>{
         let form = document.querySelector('.form-block');
         form.style = "display:none";
         let panel = document.querySelector('.susses');
         panel.style = "display:block";
 
-        let name = getFromLocale('fname')+' '+getFromLocale('lname');
-        document.getElementById("user-name").innerText = name;
+        document.getElementById("user-name").innerText =
+            getFromLocale('fname')+' '+getFromLocale('lname');
     };
 
-    //отображение формы
-    let displayForm = ()=>{
+    //display form
+    const displayForm = ()=>{
         let form = document.querySelector('.form-block');
         form.style = "display:block";
         let panel = document.querySelector('.susses');
         panel.style = "display:none";
     };
 
-    //Заполнение полей данными из локальной памяти
+    //filled input-field with data from locale storage
     function fillField(){
 
         /*Заполнение всех текстовых полей*/
@@ -36,13 +36,13 @@
             }
         });
 
-        /*установка полей переключателей*/
+        /*set radio field*/
         let value = getFromLocale('gender');
         if(value){
             document.querySelector(`[name='gender'][value='${value}']`).checked=true;
         }
 
-        /*установка чекбоксов*/
+        /*set checkbox field*/
         let values = getObjFromLocale('course');
         if(values) {
             values.forEach(value => {
@@ -51,23 +51,24 @@
         }
     }
 
-    // возвращение к полю заполнения формы
-    let goBack = (e)=>{
+    // open the clean form
+    const goBack = (e)=>{
         localStorage.clear();
         document.forms[0].reset();
         let errors = document.querySelectorAll(".error");
         for (let i=0; i<errors.length; i++) {
             errors[i].innerText="";
         }
+        document.querySelector("output").innerText = '1';
         displayForm();
     };
 
-    //Отправка данных на сервер
+    //send data to server
    function sendData(data) {
         let progress = document.querySelector('.send-status');
         progress.classList.add('progress');
 
-        //искусственная задержка
+        //timeout
         new Promise((resolve)=>setTimeout(resolve, 2000)).
         then((res)=>
             fetch('https://my-json-server.typicode.com/NastiaKyrakina/Angular-3/users/', {
@@ -90,17 +91,16 @@
         ));
     }
 
-    /*При загрузке страницы*/
-    let ready = event =>{
+    /*When page loaded*/
+    const ready = event =>{
         init();
         let cur_status = getFromLocale(STATUS);
-        //если форма отправлена успешно, отображаем соответствующее окно
+        // if form already was send, show susses window
         if(cur_status==="susses"){
             displaySussesWindow();
         }
         else {
-
-            //если форма заполняеться, но ещё не отправлена, заполняем её данными
+            //if form filling, add data to field
             if(cur_status==="progress"){
                 fillField();
             }
@@ -109,20 +109,23 @@
     };
 
 
-    /*Сбор и проверка данных*/
-    let getData = () => {
+    /*Get and check data*/
+    const getData = () => {
         let data = {};
         data.fname = getFromLocale('fname');
         data.lname = getFromLocale('lname');
         data.date = getFromLocale('date');
         data.email = getFromLocale('email');
         data.country = getFromLocale('country');
-        data.address = getFromLocale('address-1')+getFromLocale('address-2');
+
+        data.address = getFromLocale('address-1')+
+            document.getElementById('address-2').value;
 
         data.mark = document.getElementById("mark").value;
         data.gender = isGenderCorrect();
-        data.curses = isCoursesCorrect();
-        if(!data.gender || !data.curses){
+        data.courses = isCoursesCorrect();
+
+        if(!data.gender || !data.courses){
             return false;
         }
 
@@ -133,25 +136,25 @@
         }
 
         data.about = getFromLocale('about');
-
         return data;
     };
 
     let form = document.getElementsByTagName("form")[0];
 
-    //Очистка текстовых полей
+    //Clean text input
     form.addEventListener("click", function(e){
-        //если нажата кнопка для очистки полей
-        //очищаеться элемент ввода перед кнопкой
+        //if a clean-button is pressed
+        //clears the input element in front of the button
         if(e.target.getAttribute("data-action")==="clean"){
             let text_field = e.target.previousElementSibling;
             if(text_field.tagName==="INPUT" || text_field.tagName==="TEXTAREA"){
                 text_field.value='';
+                deleteKeyFromLocale(text_field.name);
             }
         }
     });
 
-    /*Событие при сабмите формы*/
+    /*Sending form*/
     function submitForm(event) {
         event.preventDefault();
         let data = getData();
@@ -165,7 +168,7 @@
         }
     }
 
-    /*Привязка событий*/
+    /*Event binding*/
     document.addEventListener("DOMContentLoaded", ready);
     form.addEventListener('submit', submitForm);
 
@@ -174,6 +177,7 @@
 
     document.querySelector(".btn-reset").addEventListener('click', (e)=>{
         localStorage.clear();
+
         setToLocale(STATUS,"progress");
     })
 
