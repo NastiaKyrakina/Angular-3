@@ -5,11 +5,14 @@
 Permits only alphabetic characters (English, Ukrainian, Russian alphabet) and delimiter characters
  */
 function delIncorrectSimvol(e) {
-    // спец. сочетание - не обрабатываем
     let key = e.key;
-    if (e.ctrlKey || e.altKey || e.metaKey || key === 'Backspace' || key === 'Enter' || !key) return;
+    if (e.ctrlKey || e.altKey || e.metaKey || key === 'Backspace' || key === 'Enter' || !key) {
+        return;
+    }
     let reg = new RegExp('[\\sA-Za-zА-Яа-яіІєЄйЙїЇЁёыЫЭэ`ʼ-]');
-    if (key.search(reg) === -1) e.preventDefault();
+    if (key.search(reg) === -1) {
+        e.preventDefault();
+    }
 }
 
 /*Remove extra whitespace characters*/
@@ -25,7 +28,7 @@ function formattingName(text) {
     let newText="";
     let offset = 0;
 
-    //the creation of an array of words that begin with a capital letter
+    //the creation of an array of words
     let words = text.toLowerCase().split(/[\s`ʼ-]+/)
         .map(word=>word.charAt(0).toUpperCase()+word.slice(1));
 
@@ -57,7 +60,7 @@ function getMaxDate(years){
 }
 
 /*Validation of the entered country name*/
-let isCountryCorrect = (country)=>{
+const isCountryCorrect = (country)=>{
     let countries = [].map.call(document.querySelectorAll(
         '#country-list option'), (country)=>country.innerText);
 
@@ -68,12 +71,11 @@ let isCountryCorrect = (country)=>{
     }
     else{
         errorBlock.innerText = "Unknown country name. Please select country from the list.";
-        return false;
     }
 };
 
 /*Retrieving selected course data*/
-let getCheckedCourses = ()=>{
+const getCheckedCourses = ()=>{
     let courses;
     //can't change to short style because the list that returned from querySelectorAll() not support method map()
     courses = [].map.call(document.querySelectorAll("[name='course']:checked"),
@@ -83,11 +85,10 @@ let getCheckedCourses = ()=>{
 };
 
 /*Check if at least one course is selected*/
-let isCoursesCorrect = ()=>{
+const isCoursesCorrect = ()=>{
     let courses = getCheckedCourses();
     let errorBlock = document.querySelector(".courses-error");
     if(!courses){
-
         errorBlock.innerText = "Please select at least one course.";
         return false;
     }
@@ -97,7 +98,7 @@ let isCoursesCorrect = ()=>{
 };
 
 /*Check if the gender is selected*/
-let isGenderCorrect = ()=>{
+const isGenderCorrect = ()=>{
 
     let gender;
     try{

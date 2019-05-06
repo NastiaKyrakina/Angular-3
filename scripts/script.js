@@ -24,7 +24,7 @@
     //filled input-field with data from locale storage
     function fillField(){
 
-        /*Заполнение всех текстовых полей*/
+        /*Fill all text field*/
         let inputField = document.querySelectorAll("[type='text'], " +
             "[type='email'], [type='date'], " +
             "[type='range'], textarea");
@@ -68,7 +68,7 @@
         let progress = document.querySelector('.send-status');
         progress.classList.add('progress');
 
-        //timeout
+        //set timeout
         new Promise((resolve)=>setTimeout(resolve, 2000)).
         then((res)=>
             fetch('https://my-json-server.typicode.com/NastiaKyrakina/Angular-3/users/', {
@@ -100,7 +100,7 @@
             displaySussesWindow();
         }
         else {
-            //if form filling, add data to field
+            //if form in progress state, add data to field
             if(cur_status==="progress"){
                 fillField();
             }
@@ -179,7 +179,7 @@
         localStorage.clear();
 
         setToLocale(STATUS,"progress");
-    })
+    });
 
 
 })();
